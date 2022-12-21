@@ -1,0 +1,27 @@
+@use '../../styles/colors';
+
+.header {
+  background-color: colors.$color-secondary;
+  color: #fff;
+  display: flex;
+  font-size: 1.5em;
+  padding: 19px 30px 15px;
+
+  nav {
+    flex: 1 0 auto;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.headerLogo {
+  width: 178px;
+}
