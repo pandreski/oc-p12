@@ -1,0 +1,24 @@
+@use '../../styles/colors';
+
+.intro {
+  margin-top: 68px;
+}
+
+.user {
+  font-size: 3em;
+}
+
+.firstname {
+  display: inline-block;
+  color: colors.$color-primary;
+}
+
+.welcomeMessage {
+  font-size: 1.125em;
+  font-weight: 400;
+  margin-top: 40px;
+}
+
+.informations {
+  margin-top: 77px;
+}

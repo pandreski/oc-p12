@@ -8,20 +8,22 @@ import style from './style.module.scss';
 export default function Aside() {
   return (
     <aside className={style.aside}>
-      <div className={style.icons}>
-        <div className={style.icon}>
-          <img src={iconYoga} alt="" />
-        </div>
-        <div className={style.icon}>
-          <img src={iconSwim} alt="" />
-        </div>
-        <div className={style.icon}>
-          <img src={iconBike} alt="" />
-        </div>
-        <div className={style.icon}>
-          <img src={iconDumbells} alt="" />
-        </div>
-      </div>
+      <nav>
+        <ul className={style.icons}>
+          <li className={style.icon}>
+            <img src={iconYoga} alt="Yoga" />
+          </li>
+          <li className={style.icon}>
+            <img src={iconSwim} alt="Natation" />
+          </li>
+          <li className={style.icon}>
+            <img src={iconBike} alt="Vélo" />
+          </li>
+          <li className={style.icon}>
+            <img src={iconDumbells} alt="Musculation" />
+          </li>
+        </ul>
+      </nav>
       <p className={style.copyright}>Copyright, SportSee 2020</p>
     </aside>
   );

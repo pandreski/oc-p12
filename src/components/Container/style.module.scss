@@ -1,0 +1,11 @@
+.container {
+  width: calc(100vw - 116px);
+  position: relative;
+  left: 116px; // Aside's width
+}
+
+.containerWrapper {
+  max-width: 1165px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

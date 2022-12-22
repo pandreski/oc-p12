@@ -1,0 +1,29 @@
+@use '../../styles/colors';
+
+.dailyActivity {
+  background-color: colors.$color-light-grey;
+  padding: 24px 26px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.chartTitle {
+  font-size: .9375em;
+  margin: 0;
+  position: absolute;
+  top: 24px;
+  left: 26px;
+  z-index: 1;
+}
+
+.customTooltip {
+  background-color: #E60000;
+  color: #fff;
+  text-align: center;
+  font-size: .75em;
+
+  p {
+    padding: 12px 6px;
+    margin: 0;
+  }
+}
