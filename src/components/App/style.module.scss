@@ -21,4 +21,15 @@
 
 .informations {
   margin-top: 77px;
+  display: flex;
+}
+
+.charts {
+  flex: 1 1 auto;
+  padding-right: 15px;
+}
+
+.keys {
+  flex: 1 0 auto;
+  padding-left: 15px;
 }

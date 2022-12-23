@@ -1,0 +1,59 @@
+@use '../../styles/colors';
+
+$themes: (
+  'red': colors.$color-light-red,
+  'blue': colors.$color-light-blue,
+  'yellow': colors.$color-light-yellow,
+  'pink': colors.$color-light-pink,
+);
+
+.highlightData {
+  background-color: colors.$color-light-grey;
+  display: flex;
+  align-items: center;
+  padding: 32px;
+  width: 260px;
+
+  &+& {
+    margin-top: 40px;
+  }
+}
+
+.imageWrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  @each $theme,
+  $color in $themes {
+    &[data-theme=#{$theme}] {
+      background-color: $color;
+    }
+  }
+}
+
+.content {
+  padding-left: 24px;
+}
+
+.mainData {
+  color: colors.$color-text-dark;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.label {
+  color: colors.$color-text-light;
+  font-size: .875em;
+}
