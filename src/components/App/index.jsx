@@ -9,6 +9,7 @@ import firePicto from '../../assets/images/fire.svg';
 import meatPicto from '../../assets/images/meat.svg';
 import fruitPicto from '../../assets/images/fruit.svg';
 import burgerPicto from '../../assets/images/burger.svg';
+import TargetScore from '../TargetScore';
 
 function App() {
   const userID = 12;
@@ -35,6 +36,9 @@ function App() {
             <div className={style.informations}>
               <div className={style.charts}>
                 <DailyActivity userID={userID} />
+                <div className={style.chartsGroup}>
+                  <TargetScore score={apiData.data.todayScore} />
+                </div>
               </div>
               <div className={style.keys}>
                 <HighlightData mainData={`${apiData.data.keyData.calorieCount}kCal`} label="Calories" icon={firePicto} />

@@ -79,7 +79,7 @@ export default function DailyActivity({ userID }) {
                   tickCount="3"
                   axisLine={false}
                   tickLine={false}
-                  domain={['auto', 'dataMax + 5']}
+                  domain={['dataMin - 2', 'dataMax + 5']}
                 />
                 <YAxis
                   yAxisId="left"
