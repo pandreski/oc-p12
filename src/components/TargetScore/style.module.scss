@@ -3,11 +3,13 @@
 .targetScore {
   background-color: colors.$color-light-grey;
   position: relative;
+  padding: 24px 30px;
+}
 
-  .recharts-sector {
-    stroke-linejoin: round;
-    stroke-width: 7px;
-  }
+.chartTitle {
+  color: colors.$color-text-dark;
+  margin: 0;
+  font-size: .9375em;
 }
 
 .label {

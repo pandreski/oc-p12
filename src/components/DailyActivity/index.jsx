@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
-import useAxios from '../../hooks/useAxios';
+import { useApiUserDailyActivity } from '../../hooks/useAxios';
 import Loader from '../Loader';
 import style from './style.module.scss';
 
@@ -48,10 +48,10 @@ const customLegendText = (value) => <span style={legendStyle}>{value}</span>;
  * @param {Number} i Tick index
  * @returns {String} Custom tick label
  */
-const customXTickFormatter = (item, i) => `${i + 1}`;
+const customXTickFormatter = (_, i) => `${i + 1}`;
 
 export default function DailyActivity({ userID }) {
-  const { apiData, isLoading } = useAxios(`http://localhost:3000/user/${userID}/activity`);
+  const { apiUserDailyActivity, isLoading } = useApiUserDailyActivity(userID);
 
   return (
     <div className={style.dailyActivity}>
@@ -63,7 +63,7 @@ export default function DailyActivity({ userID }) {
             <p className={style.chartTitle}>Activité quotidienne</p>
             <ResponsiveContainer width="100%" height={320}>
               <BarChart
-                data={apiData.data.sessions}
+                data={apiUserDailyActivity.sessions}
               >
                 <XAxis
                   dataKey="day"
@@ -132,7 +132,10 @@ export default function DailyActivity({ userID }) {
 }
 
 DailyActivity.propTypes = {
-  userID: PropTypes.number.isRequired,
+  userID: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
 };
 
 CustomTooltip.propTypes = {

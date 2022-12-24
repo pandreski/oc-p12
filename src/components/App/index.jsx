@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Layout from '../Layout';
 import Loader from '../Loader';
-import useAxios from '../../hooks/useAxios';
-import style from './style.module.scss';
+import { useApiKeyData, useApiUserInfo } from '../../hooks/useAxios';
 import DailyActivity from '../DailyActivity';
 import HighlightData from '../HighlightData';
 import firePicto from '../../assets/images/fire.svg';
@@ -10,10 +10,29 @@ import meatPicto from '../../assets/images/meat.svg';
 import fruitPicto from '../../assets/images/fruit.svg';
 import burgerPicto from '../../assets/images/burger.svg';
 import TargetScore from '../TargetScore';
+import CategoryChart from '../CategoryChart';
+import style from './style.module.scss';
 
-function App() {
-  const userID = 12;
-  const { apiData, isLoading } = useAxios(`http://localhost:3000/user/${userID}`);
+function KeyDataList({ userID }) {
+  const { apiKeyData, isLoading } = useApiKeyData(userID);
+
+  return (
+    isLoading ? (
+      <Loader />
+    ) : (
+      <>
+        <HighlightData mainData={`${apiKeyData.calorieCount}kCal`} label="Calories" icon={firePicto} />
+        <HighlightData mainData={`${apiKeyData.proteinCount}g`} label="Protéines" theme="blue" icon={meatPicto} />
+        <HighlightData mainData={`${apiKeyData.carbohydrateCount}g`} label="Glucides" theme="yellow" icon={fruitPicto} />
+        <HighlightData mainData={`${apiKeyData.lipidCount}g`} label="Glucides" theme="pink" icon={burgerPicto} />
+      </>
+    )
+  );
+}
+
+export default function App() {
+  const userID = process.env.REACT_APP_UID;
+  const { apiUserInfo, isLoading } = useApiUserInfo(userID);
 
   return (
     <Layout>
@@ -26,7 +45,7 @@ function App() {
               <div className={style.user}>
                 Bonjour
                 {' '}
-                <div className={style.firstname}>{apiData.data.userInfos.firstName}</div>
+                <div className={style.firstname}>{apiUserInfo.firstName}</div>
               </div>
               <div className={style.welcomeMessage}>
                 Félicitation ! Vous avez explosé vos objectifs hier 👏
@@ -37,14 +56,12 @@ function App() {
               <div className={style.charts}>
                 <DailyActivity userID={userID} />
                 <div className={style.chartsGroup}>
-                  <TargetScore score={apiData.data.todayScore} />
+                  <CategoryChart userID={userID} />
+                  <TargetScore userID={userID} />
                 </div>
               </div>
               <div className={style.keys}>
-                <HighlightData mainData={`${apiData.data.keyData.calorieCount}kCal`} label="Calories" icon={firePicto} />
-                <HighlightData mainData={`${apiData.data.keyData.proteinCount}g`} label="Protéines" theme="blue" icon={meatPicto} />
-                <HighlightData mainData={`${apiData.data.keyData.carbohydrateCount}g`} label="Glucides" theme="yellow" icon={fruitPicto} />
-                <HighlightData mainData={`${apiData.data.keyData.lipidCount}g`} label="Glucides" theme="pink" icon={burgerPicto} />
+                <KeyDataList userID={userID} />
               </div>
             </div>
           </main>
@@ -54,4 +71,9 @@ function App() {
   );
 }
 
-export default App;
+KeyDataList.propTypes = {
+  userID: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
+};
