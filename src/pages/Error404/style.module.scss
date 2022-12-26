@@ -1,0 +1,23 @@
+@use '../../styles/colors';
+
+.title {
+  font-size: 3em;
+  margin-top: 68px;
+}
+
+.highlight {
+  display: inline-block;
+  color: colors.$color-primary;
+}
+
+.message {
+  font-size: 1.125em;
+  font-weight: 400;
+  margin-top: 40px;
+
+  a {
+    display: block;
+    color: colors.$color-primary;
+    margin-top: 3em;
+  }
+}

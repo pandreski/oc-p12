@@ -49,7 +49,7 @@ export default function CategoryChart({ userID }) {
         ) : (
           <ResponsiveContainer width="100%" height={200}>
             <RadarChart data={mappedData}>
-              <PolarGrid tick={{ stroke: '#00f' }} />
+              <PolarGrid />
               <PolarAngleAxis dataKey="cat" tick={{ fill: '#ffffff', fontSize: 12 }} />
               <Radar
                 dataKey="value"

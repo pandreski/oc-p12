@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Get general user's information.
@@ -10,6 +11,7 @@ import { useEffect, useState } from 'react';
 export function useApiUserInfo(uid) {
   const [apiUserInfo, setData] = useState({});
   const [isLoading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!uid) return;
@@ -19,6 +21,7 @@ export function useApiUserInfo(uid) {
         const userInfos = await data.data.userInfos;
         setData(userInfos);
       } catch (error) {
+        navigate('/not-found');
         console.error(error);
       } finally {
         setLoading(false);
