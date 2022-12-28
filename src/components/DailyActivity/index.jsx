@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
-import { useApiUserDailyActivity } from '../../hooks/useAxios';
+import { useApiUserDailyActivity } from '../../hooks/useApi';
 import Loader from '../Loader';
 import style from './style.module.scss';
 
@@ -61,7 +61,7 @@ export default function DailyActivity({ userID }) {
         ) : (
           <>
             <p className={style.chartTitle}>Activité quotidienne</p>
-            <ResponsiveContainer width="100%" height={320}>
+            <ResponsiveContainer width="100%" height={272}>
               <BarChart
                 data={apiUserDailyActivity.sessions}
               >

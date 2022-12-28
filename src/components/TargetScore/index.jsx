@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-import { useApiUserScore } from '../../hooks/useAxios';
+import { useApiUserScore } from '../../hooks/useApi';
 import style from './style.module.scss';
 import Loader from '../Loader';
 
@@ -22,10 +22,7 @@ export default function TargetScore({ userID }) {
       <div className={style.targetScore}>
         <p className={style.chartTitle}>Score</p>
         <ResponsiveContainer width="100%" height={200}>
-          <PieChart
-            width={180}
-            height={180}
-          >
+          <PieChart>
             <Pie
               data={dailyTargetData}
               fill="#ff0101"

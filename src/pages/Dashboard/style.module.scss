@@ -27,13 +27,24 @@
 .charts {
   flex: 1 1 auto;
   padding-right: 15px;
+  min-width: 0;
+}
+
+.chartsGroup {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 30px;
 }
 
 .keys {
-  flex: 1 0 auto;
+  flex: 0 0 auto;
   padding-left: 15px;
 }
 
 .chartsGroup {
   margin-top: 30px;
+
+  > div {
+    min-width: 0;
+  }
 }

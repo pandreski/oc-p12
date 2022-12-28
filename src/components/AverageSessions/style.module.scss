@@ -1,0 +1,26 @@
+.avgSession {
+  background-color: #f00;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.chartTitle {
+  font-size: .9375em;
+  color: rgba(#fff, .5);
+  position: absolute;
+  top: 29px;
+  left: 34px;
+  z-index: 1;
+  width: 75%;
+}
+
+.customTooltip {
+  background-color: #fff;
+  padding: 10px 7px;
+  font-size: .75em;
+  color: #000;
+  outline: none;
+}

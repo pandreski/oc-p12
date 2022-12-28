@@ -153,3 +153,33 @@ export function useApiUserActivityTypes(uid) {
 
   return { apiUserActivityTypes, isLoading };
 }
+
+/**
+ * Get user's sessions average time.
+ *
+ * @param {Number} uid User ID
+ * @returns {Object}
+ */
+export function useApiAverageSessions(uid) {
+  const [apiAverageSessions, setData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!uid) return;
+    async function getData() {
+      try {
+        const { data } = await axios.get(`http://localhost:3000/user/${uid}/average-sessions`);
+        const userAverageSessions = await data.data.sessions;
+        setData(userAverageSessions);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    setLoading(true);
+    getData();
+  }, []);
+
+  return { apiAverageSessions, isLoading };
+}

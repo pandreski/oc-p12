@@ -5,22 +5,20 @@ import {
   PolarGrid, Radar, RadarChart, ResponsiveContainer,
 } from 'recharts';
 import Loader from '../Loader';
-import { useApiUserActivityTypes } from '../../hooks/useAxios';
+import { useApiUserActivityTypes } from '../../hooks/useApi';
 import style from './style.module.scss';
-
-/**
- * Capitalize first letter of a string.
- *
- * @param {String} elem Lowercase string
- * @returns {String} Capitalized string
- */
-function capitalizeFirstLetter(elem) {
-  return elem.charAt(0).toUpperCase() + elem.slice(1);
-}
 
 export default function CategoryChart({ userID }) {
   const { apiUserActivityTypes, isLoading } = useApiUserActivityTypes(userID);
   const [mappedData, setData] = useState([]);
+  const kindTranslate = {
+    cardio: 'Cardio',
+    energy: 'Energie',
+    endurance: 'Endurance',
+    strength: 'Force',
+    speed: 'Vitesse',
+    intensity: 'Intensité',
+  };
 
   useEffect(() => {
     if (!Object.keys(apiUserActivityTypes).length) return;
@@ -28,9 +26,9 @@ export default function CategoryChart({ userID }) {
       try {
         const dataLoaded = await apiUserActivityTypes;
         let categoriesArray = Object.values(dataLoaded.kind);
-        categoriesArray = categoriesArray.map((elem) => capitalizeFirstLetter(elem));
+        categoriesArray = categoriesArray.map((elem) => elem);
         const fullData = dataLoaded.data.map((elem) => (
-          { ...elem, cat: categoriesArray[elem.kind - 1] }
+          { ...elem, cat: kindTranslate[categoriesArray[elem.kind - 1]] }
         ));
 
         setData(fullData);
@@ -46,11 +44,14 @@ export default function CategoryChart({ userID }) {
       {
         isLoading ? (
           <Loader />
-        ) : (
+        ) : mappedData && (
           <ResponsiveContainer width="100%" height={200}>
             <RadarChart data={mappedData}>
               <PolarGrid />
-              <PolarAngleAxis dataKey="cat" tick={{ fill: '#ffffff', fontSize: 12 }} />
+              <PolarAngleAxis
+                dataKey="cat"
+                tick={{ fill: '#fff', fontSize: 12 }}
+              />
               <Radar
                 dataKey="value"
                 fill="#FF0101"

@@ -1,0 +1,6 @@
+@use '../../styles/colors';
+
+.anchor {
+  color: colors.$color-primary;
+  font-size: 1.25em;
+}
