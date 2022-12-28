@@ -11,8 +11,8 @@ import Loader from '../Loader';
 export default function TargetScore({ userID }) {
   const { apiUserScore, isLoading } = useApiUserScore(userID);
   const dailyTargetData = [
-    { name: 'done', value: apiUserScore },
-    { name: 'todo', value: 1 - apiUserScore },
+    { name: 'done', value: apiUserScore.score },
+    { name: 'todo', value: 1 - apiUserScore.score },
   ];
 
   return (
@@ -41,7 +41,7 @@ export default function TargetScore({ userID }) {
         </ResponsiveContainer>
         <div className={style.label}>
           <div className={style.percentage}>
-            {`${apiUserScore * 100}%`}
+            {`${apiUserScore.score * 100}%`}
           </div>
           de votre
           <br />

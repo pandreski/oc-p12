@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  ActivityModel, AverageSessionsModel, GeneralModel, PerformanceModel,
+} from '../utils/models';
+
+// Get a boolean value of env variable
+const isMocked = !!+process.env.REACT_APP_MOCKED_DATA;
 
 /**
  * Get general user's information.
@@ -17,9 +23,12 @@ export function useApiUserInfo(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const { data } = await axios.get(`http://localhost:3000/user/${uid}`);
-        const userInfos = await data.data.userInfos;
-        setData(userInfos);
+        const url = isMocked ? '/__mocks__/general.json' : `http://localhost:3000/user/${uid}`;
+        const { data } = await axios.get(url);
+
+        const model = new GeneralModel(data.data);
+
+        setData(model.getUserInfos);
       } catch (error) {
         navigate('/not-found');
         console.error(error);
@@ -48,9 +57,12 @@ export function useApiKeyData(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const { data } = await axios.get(`http://localhost:3000/user/${uid}`);
-        const keyData = await data.data.keyData;
-        setData(keyData);
+        const url = isMocked ? '/__mocks__/general.json' : `http://localhost:3000/user/${uid}`;
+        const { data } = await axios.get(url);
+
+        const model = new GeneralModel(data.data);
+
+        setData(model.getKeyData);
       } catch (error) {
         console.error(error);
       } finally {
@@ -78,9 +90,12 @@ export function useApiUserScore(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const { data } = await axios.get(`http://localhost:3000/user/${uid}`);
-        const userScore = await data.data.todayScore;
-        setData(userScore);
+        const url = isMocked ? '/__mocks__/general.json' : `http://localhost:3000/user/${uid}`;
+        const { data } = await axios.get(url);
+
+        const model = new GeneralModel(data.data);
+
+        setData(model.getScore);
       } catch (error) {
         console.error(error);
       } finally {
@@ -108,9 +123,12 @@ export function useApiUserDailyActivity(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const { data } = await axios.get(`http://localhost:3000/user/${uid}/activity`);
-        const userDailyActivity = await data.data;
-        setData(userDailyActivity);
+        const url = isMocked ? '/__mocks__/activity.json' : `http://localhost:3000/user/${uid}/activity`;
+        const { data } = await axios.get(url);
+
+        const model = new ActivityModel(data.data);
+
+        setData(model.getSessions);
       } catch (error) {
         console.error(error);
       } finally {
@@ -138,9 +156,12 @@ export function useApiUserActivityTypes(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const { data } = await axios.get(`http://localhost:3000/user/${uid}/performance`);
-        const userActivityTypes = await data.data;
-        setData(userActivityTypes);
+        const url = isMocked ? '/__mocks__/performance.json' : `http://localhost:3000/user/${uid}/performance`;
+        const { data } = await axios.get(url);
+
+        const model = new PerformanceModel(data.data);
+
+        setData(model.getPerformance);
       } catch (error) {
         console.error(error);
       } finally {
@@ -168,9 +189,12 @@ export function useApiAverageSessions(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const { data } = await axios.get(`http://localhost:3000/user/${uid}/average-sessions`);
-        const userAverageSessions = await data.data.sessions;
-        setData(userAverageSessions);
+        const url = isMocked ? '/__mocks__/average-sessions.json' : `http://localhost:3000/user/${uid}/average-sessions`;
+        const { data } = await axios.get(url);
+
+        const model = new AverageSessionsModel(data.data);
+
+        setData(model.getAverageSessions);
       } catch (error) {
         console.error(error);
       } finally {

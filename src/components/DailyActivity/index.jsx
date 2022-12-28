@@ -63,7 +63,7 @@ export default function DailyActivity({ userID }) {
             <p className={style.chartTitle}>Activité quotidienne</p>
             <ResponsiveContainer width="100%" height={272}>
               <BarChart
-                data={apiUserDailyActivity.sessions}
+                data={apiUserDailyActivity}
               >
                 <XAxis
                   dataKey="day"
