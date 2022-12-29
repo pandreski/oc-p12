@@ -5,6 +5,14 @@ import Home from '../../pages/Home';
 import Layout from '../Layout';
 import Error404 from '../../pages/Error404';
 
+/**
+ * The main component of the app, including the routing.
+ * @component
+ * @example
+ * return (
+ *  <App />
+ * )
+ */
 export default function App() {
   return (
     <Routes>

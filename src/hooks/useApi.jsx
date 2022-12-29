@@ -5,8 +5,17 @@ import {
   ActivityModel, AverageSessionsModel, GeneralModel, PerformanceModel,
 } from '../utils/models';
 
-// Get a boolean value of env variable
+/**
+ * Should we use mocked data?
+ * @type {boolean}
+ */
 const isMocked = !!+process.env.REACT_APP_MOCKED_DATA;
+
+/**
+ * The API port number.
+ * @type {string}
+ */
+const apiPort = process.env.REACT_APP_BACKEND_PORT;
 
 /**
  * Get general user's information.
@@ -23,7 +32,7 @@ export function useApiUserInfo(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const url = isMocked ? '/__mocks__/general.json' : `http://localhost:3000/user/${uid}`;
+        const url = isMocked ? '/__mocks__/general.json' : `http://localhost:${apiPort}/user/${uid}`;
         const { data } = await axios.get(url);
 
         const model = new GeneralModel(data.data);
@@ -57,7 +66,7 @@ export function useApiKeyData(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const url = isMocked ? '/__mocks__/general.json' : `http://localhost:3000/user/${uid}`;
+        const url = isMocked ? '/__mocks__/general.json' : `http://localhost:${apiPort}/user/${uid}`;
         const { data } = await axios.get(url);
 
         const model = new GeneralModel(data.data);
@@ -90,7 +99,7 @@ export function useApiUserScore(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const url = isMocked ? '/__mocks__/general.json' : `http://localhost:3000/user/${uid}`;
+        const url = isMocked ? '/__mocks__/general.json' : `http://localhost:${apiPort}/user/${uid}`;
         const { data } = await axios.get(url);
 
         const model = new GeneralModel(data.data);
@@ -123,7 +132,7 @@ export function useApiUserDailyActivity(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const url = isMocked ? '/__mocks__/activity.json' : `http://localhost:3000/user/${uid}/activity`;
+        const url = isMocked ? '/__mocks__/activity.json' : `http://localhost:${apiPort}/user/${uid}/activity`;
         const { data } = await axios.get(url);
 
         const model = new ActivityModel(data.data);
@@ -143,7 +152,7 @@ export function useApiUserDailyActivity(uid) {
 }
 
 /**
- * Get user's activity types.
+ * Get user's activity types (categories).
  *
  * @param {Number} uid User ID
  * @returns {Object}
@@ -156,7 +165,7 @@ export function useApiUserActivityTypes(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const url = isMocked ? '/__mocks__/performance.json' : `http://localhost:3000/user/${uid}/performance`;
+        const url = isMocked ? '/__mocks__/performance.json' : `http://localhost:${apiPort}/user/${uid}/performance`;
         const { data } = await axios.get(url);
 
         const model = new PerformanceModel(data.data);
@@ -189,7 +198,7 @@ export function useApiAverageSessions(uid) {
     if (!uid) return;
     async function getData() {
       try {
-        const url = isMocked ? '/__mocks__/average-sessions.json' : `http://localhost:3000/user/${uid}/average-sessions`;
+        const url = isMocked ? '/__mocks__/average-sessions.json' : `http://localhost:${apiPort}/user/${uid}/average-sessions`;
         const { data } = await axios.get(url);
 
         const model = new AverageSessionsModel(data.data);

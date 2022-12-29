@@ -14,6 +14,15 @@ import CategoryChart from '../../components/CategoryChart';
 import style from './style.module.scss';
 import AverageSessions from '../../components/AverageSessions';
 
+/**
+ * Component displaying a list of several HighlightData components.
+ * @component
+ * @example
+ * const userID = 12;
+ * return (
+ *  <KeyDataList userID={userID} />
+ * )
+ */
 function KeyDataList({ userID }) {
   const { apiKeyData, isLoading } = useApiKeyData(userID);
 
@@ -25,12 +34,20 @@ function KeyDataList({ userID }) {
         <HighlightData mainData={`${apiKeyData.calorieCount}kCal`} label="Calories" icon={firePicto} />
         <HighlightData mainData={`${apiKeyData.proteinCount}g`} label="Protéines" theme="blue" icon={meatPicto} />
         <HighlightData mainData={`${apiKeyData.carbohydrateCount}g`} label="Glucides" theme="yellow" icon={fruitPicto} />
-        <HighlightData mainData={`${apiKeyData.lipidCount}g`} label="Glucides" theme="pink" icon={burgerPicto} />
+        <HighlightData mainData={`${apiKeyData.lipidCount}g`} label="Lipides" theme="pink" icon={burgerPicto} />
       </>
     )
   );
 }
 
+/**
+ * Component displaying the dashboard page.
+ * @component
+ * @example
+ * return (
+ *  <Dashboard />
+ * )
+ */
 export default function Dashboard() {
   const { uid } = useParams();
   const { apiUserInfo, isLoading } = useApiUserInfo(uid);

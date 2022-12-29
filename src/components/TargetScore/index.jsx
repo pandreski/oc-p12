@@ -8,6 +8,15 @@ import { useApiUserScore } from '../../hooks/useApi';
 import style from './style.module.scss';
 import Loader from '../Loader';
 
+/**
+ * Component displaying the user's Target daily score chart (pie).
+ * @component
+ * @example
+ * const userID = 12;
+ * return (
+ *  <TargetScore userID={userID} />
+ * )
+ */
 export default function TargetScore({ userID }) {
   const { apiUserScore, isLoading } = useApiUserScore(userID);
   const dailyTargetData = [

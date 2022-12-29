@@ -9,10 +9,12 @@ import Loader from '../Loader';
 import style from './style.module.scss';
 
 /**
- * Customize tooltip data.
- *
- * @param {Object} param0 Tooltip's data object
- * @returns {Node || null} Tooltip markup or null if the data is not filled
+ * Component that customize tooltip data.
+ * @component
+ * @example
+ * return (
+ *  <CustomTooltip />
+ * )
  */
 function CustomTooltip({ active, payload }) {
   if (active) {
@@ -28,6 +30,10 @@ function CustomTooltip({ active, payload }) {
   return null;
 }
 
+/**
+ * The legend's style parameters
+ * @type {object}
+ */
 const legendStyle = {
   color: '#74798C',
   fontSize: '.875em',
@@ -50,6 +56,15 @@ const customLegendText = (value) => <span style={legendStyle}>{value}</span>;
  */
 const customXTickFormatter = (_, i) => `${i + 1}`;
 
+/**
+ * Component displaying the Daily Activity chart (bar).
+ * @component
+ * @example
+ * const userID = 12;
+ * return (
+ *  <DailyActivity userID={userID} />
+ * )
+ */
 export default function DailyActivity({ userID }) {
   const { apiUserDailyActivity, isLoading } = useApiUserDailyActivity(userID);
 

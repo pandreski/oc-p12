@@ -5,6 +5,14 @@ import iconSwim from '../../assets/images/swim.svg';
 import iconYoga from '../../assets/images/yoga.svg';
 import style from './style.module.scss';
 
+/**
+ * Component displaying the aside navigation.
+ * @component
+ * @example
+ * return (
+ *  <Aside />
+ * )
+ */
 export default function Aside() {
   return (
     <aside className={style.aside}>

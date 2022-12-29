@@ -8,10 +8,12 @@ import { useApiAverageSessions } from '../../hooks/useApi';
 import Loader from '../Loader';
 
 /**
- * Customize tooltip data.
- *
- * @param {Object} param0 Tooltip's data object
- * @returns {Node || null} Tooltip markup or null if the data is not filled
+ * Component that customize tooltip data.
+ * @component
+ * @example
+ * return (
+ *  <CustomTooltip />
+ * )
  */
 function CustomTooltip({ active, payload }) {
   if (active) {
@@ -24,6 +26,15 @@ function CustomTooltip({ active, payload }) {
   return null;
 }
 
+/**
+ * Component displaying the Average Sessions chart (area).
+ * @component
+ * @example
+ * const userID = 12;
+ * return (
+ *  <AverageSessions userID={userID} />
+ * )
+ */
 export default function AverageSessions({ userID }) {
   const { apiAverageSessions, isLoading } = useApiAverageSessions(userID);
   const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];

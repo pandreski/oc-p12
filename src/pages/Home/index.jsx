@@ -2,6 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import style from './style.module.scss';
 
+/**
+ * Component displaying a list of links to navigate on the app.
+ * @component
+ * @example
+ * return (
+ *  <Home />
+ * )
+ */
 export default function Home() {
   return (
     <>

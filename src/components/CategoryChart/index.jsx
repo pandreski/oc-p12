@@ -8,6 +8,15 @@ import Loader from '../Loader';
 import { useApiUserActivityTypes } from '../../hooks/useApi';
 import style from './style.module.scss';
 
+/**
+ * Component displaying the Category chart (radar).
+ * @component
+ * @example
+ * const userID = 12;
+ * return (
+ *  <CategoryChart userID={userID} />
+ * )
+ */
 export default function CategoryChart({ userID }) {
   const { apiUserActivityTypes, isLoading } = useApiUserActivityTypes(userID);
 

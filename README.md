@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# SportSee
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SportSee is a dashboard based on React JS where the user can see its fitness progression. The data can be fetched from an external API or by local mocks.
 
-## Available Scripts
+This project is part of the Openclassrooms program "Javascript/React application developer" (project #12).
 
-In the project directory, you can run:
+## Requirements
 
-### `yarn start`
+- Node 16.x
+- Yarn 1.22+
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Used tools
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React 18
+- React router
+- CSS Modules (scss)
+- Axios
+- Recharts
+- Eslint
 
-### `yarn test`
+## Installation steps (front-end)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone this project,
+2. Duplicate `.env.example` file to `.env` (in the root directory),
+3. Set the correct variables in the `.env` file (see sections below),
+4. Install dependencies with `yarn install`,
+5. Start the project with `yarn start`,
+6. Open the app with the link given in your console.
 
-### `yarn build`
+## Installation steps (back-end)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone [this project](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard) and follow the steps in its README.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In the root directory, edit your `.env` file and set the correct port for `REACT_APP_BACKEND_PORT` variable.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API or mocked data ?
 
-### `yarn eject`
+You can choose the data source between the local mocks or the API provided by the back-end.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+In the root directory, edit your `.env` file with one of the following declaration:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Use API
+```
+REACT_APP_MOCKED_DATA="0"
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Use mocks
+```
+REACT_APP_MOCKED_DATA="1"
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> 🚨 If your react app is already running, you might restart it after making a change in the `.env` file.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> ℹ️ Mocked data files are located in `/public/__mocks__/`.
