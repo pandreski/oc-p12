@@ -25,7 +25,7 @@ This project is part of the Openclassrooms program "Javascript/React application
 3. Set the correct variables in the `.env` file (see sections below),
 4. Install dependencies with `yarn install`,
 5. Start the project with `yarn start`,
-6. Open the app with the link given in your console.
+6. Open the app with the link given in your terminal.
 
 ## Installation steps (back-end)
 
