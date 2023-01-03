@@ -1,3 +1,5 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable func-names */
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -39,8 +41,14 @@ export function useApiUserInfo(uid) {
 
         setData(model.getUserInfos);
       } catch (error) {
-        navigate('/not-found');
-        console.error(error);
+        if (error.response) {
+          // The client was given an error response (5xx, 4xx)
+          navigate('/user/not-found');
+        } else {
+          // Anything else
+          navigate('/api-error');
+        }
+        console.error('Error: ', error.message);
       } finally {
         setLoading(false);
       }

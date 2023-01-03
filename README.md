@@ -18,6 +18,12 @@ This project is part of the Openclassrooms program "Javascript/React application
 - Recharts
 - Eslint
 
+## Installation steps (back-end)
+
+Clone [this project](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard) and follow the steps in its README.
+
+In the root directory, edit your `.env` file and set the correct port for `REACT_APP_BACKEND_PORT` variable.
+
 ## Installation steps (front-end)
 
 1. Clone this project,
@@ -26,12 +32,6 @@ This project is part of the Openclassrooms program "Javascript/React application
 4. Install dependencies with `yarn install`,
 5. Start the project with `yarn start`,
 6. Open the app with the link given in your terminal.
-
-## Installation steps (back-end)
-
-Clone [this project](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard) and follow the steps in its README.
-
-In the root directory, edit your `.env` file and set the correct port for `REACT_APP_BACKEND_PORT` variable.
 
 ## API or mocked data ?
 
