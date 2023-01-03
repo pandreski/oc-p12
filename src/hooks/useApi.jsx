@@ -1,5 +1,3 @@
-/* eslint-disable object-shorthand */
-/* eslint-disable func-names */
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
