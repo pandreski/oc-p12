@@ -11,6 +11,6 @@ import Error from '../../components/Error';
  */
 export default function Error404() {
   return (
-    <Error title1="Page" title2="non trouvée" message="La page que vous cherchez n\'existe pas." />
+    <Error title1="Page" title2="non trouvée" message="La page que vous cherchez n'existe pas." />
   );
 }
